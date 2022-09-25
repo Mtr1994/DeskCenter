@@ -26,6 +26,7 @@ QWidget#widgetBase
     border-right: 1px solid #d0d0d0;
     border-bottom: 1px solid #d0d0d0;
     border-top-right-radius: 0.3em;
+    background-color: #f7f7f9;
 }
 
 QWidget#widgetLeftBase
@@ -43,6 +44,16 @@ QWidget#widgetTitleBase
     border-top: 1px solid #d0d0d0;
     border-right: 1px solid #d0d0d0;
     border-top-right-radius: 0.3em;
+    background-color: #ffffff;
+}
+
+QWidget#widgetSizeGrip
+{
+    min-width: 0.8em;
+    max-width: 0.8em;
+    min-height: 0.8em;
+    max-height: 0.8em;
+    background-color: transparent;
 }
 
 /* QPushButton */
@@ -144,15 +155,6 @@ QLineEdit:focus
     border: 1px solid #cccccc;
 }
 
-/* QStatusBar */
-QStatusBar
-{
-    min-height: 1.2em;
-    background-color: #fefefe;
-    border-top: 1px solid #e0e0e0;
-    color: #666666;
-}
-
 /* QCheckBox */
 QCheckBox
 {
@@ -214,4 +216,3 @@ QHeaderView:section:last
 {
     border-right:1px solid #e0e0e0;
 }
-

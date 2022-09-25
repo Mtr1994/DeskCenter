@@ -52,7 +52,14 @@
         <number>0</number>
        </property>
        <item row="0" column="0" rowspan="2">
-        <widget class="QWidget" name="widgetLeftBase" native="true"/>
+        <widget class="QWidget" name="widgetLeftBase" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>240</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
        </item>
        <item row="0" column="1">
         <widget class="QWidget" name="widgetTitleBase" native="true">
@@ -143,7 +150,41 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QWidget" name="widget_2" native="true"/>
+        <widget class="QWidget" name="widgetContentBase" native="true">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QWidget" name="widgetContent" native="true"/>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSizeGrip" name="widgetSizeGrip" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -156,6 +197,12 @@
    <class>FlatToolButton</class>
    <extends>QPushButton</extends>
    <header>./Control/FlatToolButton/flattoolbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QSizeGrip</class>
+   <extends>QWidget</extends>
+   <header>qsizegrip.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

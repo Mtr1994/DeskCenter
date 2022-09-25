@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
     init();
 
     setWindowTitle("客户端管理程序模板");
+
+    // 程序设计来源于 https://www.ui.cn/detail/634573
 }
 
 MainWindow::~MainWindow()
