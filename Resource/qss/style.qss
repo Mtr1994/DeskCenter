@@ -62,14 +62,12 @@ QWidget#widgetSizeGrip
 
 QWidget#widgetContentBase
 {
-    margin: 0.8em;
-    border-radius: 0.3em;
-    background-color: #fefefe;
+    background-color: transparent;
 }
 
 QWidget#scrollAreaWidgetContents
 {
-    background-color: #fefefe;
+    background-color: transparent;
 }
 
 /* QPushButton */
@@ -268,12 +266,5 @@ QLabel#lbTitle
 QScrollArea
 {
     border: none;
-    background-color: #fefefe;
-}
-
-QScrollArea#scrollArea
-{
-    margin: 0.1em;
-    margin-left: 0.9em;
-    margin-top: 0.9em;
+    background-color: transparent;
 }
