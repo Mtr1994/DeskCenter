@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -35,14 +35,26 @@ DESTDIR = ../bin
 
 SOURCES += \
     Control/FlatToolButton/flattoolbutton.cpp \
+    Public/appsignal.cpp \
+    Widget/widgetappmenu.cpp \
+    Widget/widgetcontentpages.cpp \
+    Widget/widgetstatistics.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     Control/FlatToolButton/flattoolbutton.h \
+    Public/appsignal.h \
+    Public/treeitemdelegate.h \
+    Widget/widgetappmenu.h \
+    Widget/widgetcontentpages.h \
+    Widget/widgetstatistics.h \
     mainwindow.h
 
 FORMS += \
+    Widget/widgetappmenu.ui \
+    Widget/widgetcontentpages.ui \
+    Widget/widgetstatistics.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

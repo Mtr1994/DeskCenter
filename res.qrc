@@ -2,5 +2,27 @@
     <qresource prefix="/">
         <file>Resource/icon/icon.ico</file>
         <file>Resource/qss/style.qss</file>
+        <file>Resource/image/menu/demo.svg</file>
+        <file>Resource/image/menu/homepage.svg</file>
+        <file>Resource/image/menu/homepage_fill.svg</file>
+        <file>Resource/image/menu/setup.svg</file>
+        <file>Resource/image/menu/setup_fill.svg</file>
+        <file>Resource/image/menu/dynamic.svg</file>
+        <file>Resource/image/menu/dynamic_fill.svg</file>
+        <file>Resource/image/menu/businesscard.svg</file>
+        <file>Resource/image/menu/businesscard_fill.svg</file>
+        <file>Resource/image/menu/clock.svg</file>
+        <file>Resource/image/menu/clock_fill.svg</file>
+        <file>Resource/image/menu/people.svg</file>
+        <file>Resource/image/menu/people_fill.svg</file>
+        <file>Resource/image/menu/praise.svg</file>
+        <file>Resource/image/menu/praise_fill.svg</file>
+        <file>Resource/image/menu/share.svg</file>
+        <file>Resource/image/menu/share_fill.svg</file>
+        <file>Resource/image/menu/label.svg</file>
+        <file>Resource/image/menu/label_fill.svg</file>
+        <file>Resource/image/menu/workbench.svg</file>
+        <file>Resource/image/menu/workbench_fill.svg</file>
+        <file>Resource/icon/logo.png</file>
     </qresource>
 </RCC>

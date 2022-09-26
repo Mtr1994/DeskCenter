@@ -59,6 +59,22 @@
            <height>0</height>
           </size>
          </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QLabel" name="lbLogo">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item row="1" column="0">
+           <widget class="WidgetAppMenu" name="widgetMenu" native="true"/>
+          </item>
+         </layout>
         </widget>
        </item>
        <item row="0" column="1">
@@ -167,9 +183,6 @@
           <property name="spacing">
            <number>0</number>
           </property>
-          <item row="0" column="0">
-           <widget class="QWidget" name="widgetContent" native="true"/>
-          </item>
           <item row="1" column="1">
            <widget class="QSizeGrip" name="widgetSizeGrip" native="true">
             <property name="sizePolicy">
@@ -178,8 +191,24 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="WidgetContentPages" name="widgetContent" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
            </widget>
           </item>
@@ -202,6 +231,18 @@
    <class>QSizeGrip</class>
    <extends>QWidget</extends>
    <header>qsizegrip.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetAppMenu</class>
+   <extends>QWidget</extends>
+   <header>./Widget/widgetappmenu.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>WidgetContentPages</class>
+   <extends>QWidget</extends>
+   <header>./Widget/widgetcontentpages.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
