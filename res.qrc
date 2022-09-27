@@ -24,5 +24,6 @@
         <file>Resource/image/menu/workbench.svg</file>
         <file>Resource/image/menu/workbench_fill.svg</file>
         <file>Resource/icon/logo.png</file>
+        <file>Resource/image/public/vertical-line.svg</file>
     </qresource>
 </RCC>

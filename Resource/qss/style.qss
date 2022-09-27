@@ -1,6 +1,6 @@
 ﻿QMainWindow#MainWindow
 {
-    min-width: 72em;
+    min-width: 84em;
     min-height: 45em;
     border-radius: 2em;
 }
@@ -26,7 +26,7 @@ QWidget#widgetBase
     border-right: 1px solid #d0d0d0;
     border-bottom: 1px solid #d0d0d0;
     border-top-right-radius: 0.3em;
-    background-color: #f7f7f9;
+    background-color: rgb(247, 247, 249);
 }
 
 QWidget#widgetLeftBase
@@ -67,6 +67,20 @@ QWidget#widgetContentBase
 
 QWidget#scrollAreaWidgetContents
 {
+    background-color: red;
+}
+
+QWidget#widgetRecruitBase,#widgetResumeBase,#widgetPostBase
+{
+    background-color: #fefefe;
+    border: none;
+    border-radius: 0.3em;
+}
+
+/* QScrollArea */
+QScrollArea
+{
+    border: none;
     background-color: transparent;
 }
 
@@ -150,6 +164,35 @@ QPushButton[Danger="true"]:!enabled
     background-color: #444444;
 }
 
+QPushButton[MenuSelect="true"]
+{
+    min-height: 1.8em;
+    min-width: 3.2em;
+    border: none;
+    border-radius: 0.2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    color: #232323;
+    background-color: #fefefe;
+}
+
+QPushButton[MenuSelect="true"]:hover
+{
+    background-color: rgb(250, 250, 252);
+}
+
+QPushButton[MenuSelect="true"]:checked
+{
+    color: rgb(76, 166, 168);
+    background-color: rgba(76, 166, 168, 24);
+}
+
+QPushButton[MenuSelect="true"]:!enabled
+{
+    background-color: #444444;
+}
+
+
 /* QLineEdit */
 QLineEdit
 {
@@ -190,45 +233,42 @@ QCheckBox::indicator:checked
 /* QTableView */
 QTableView
 {
-    border: 1px solid #e0e0e0;
+    border: none;
     background-color: #fefefe;
-    gridline-color: #e0e0e0;
-    padding-right: -1px;
+    gridline-color: rgb(247, 247, 249);
     outline: none;
+    min-height: 21.6em;
+    padding-left: 2em;
 }
 
 QTableView::item
 {
     border: none;
-    padding-left: 0.2em;
+    padding-left: 2em;
+    color: rgb(131, 138, 151);
+    border-bottom: 1px solid rgb(247, 247, 249);
 }
 
 QTableView::item:selected
 {
     outline: none;
-    background-color: #fc9153;
+    background-color: rgba(76, 166, 168, 24);
 }
 
 QHeaderView
 {
-    min-height: 2.8em;
+    min-height: 2.4em;
     background-color: #fefefe;
-    border-bottom: 1px solid #e0e0e0;
-    border-right: 1px solid #e0e0e0;
+    border-bottom: none;
 }
 
 QHeaderView:section
 {
-    padding-left: 3px;
-    background-color: #fefefe;
+    background-color: transparent;
     border: none;
-    border-right:1px solid #e0e0e0;
-    border-bottom:1px solid #e0e0e0;
-}
-
-QHeaderView:section:last
-{
-    border-right:1px solid #e0e0e0;
+    border-bottom:1px solid rgb(247, 247, 249);
+    font-weight: bold;
+    padding-left: 2em;
 }
 
 /* QListView */
@@ -250,21 +290,20 @@ QLabel#lbLogo
 {
     min-height: 6em;
     min-width: 2em;
-
     padding: 1.6em 0em;
-
     image: url(:/Resource/icon/logo.png);
 }
 
-QLabel#lbTitle
+QLabel[TitleA]
 {
-    font: 20pt "Microsoft Yahei";
+    font: 10pt "Microsoft Yahei";
     font-weight: bold;
+    min-height: 3.2em;
 }
 
-/* QScrollArea */
-QScrollArea
+QLabel[TitleIcon]
 {
-    border: none;
-    background-color: transparent;
+    min-width: 0.8em;
+    min-height: 3.2em;
+    image: url(:/Resource/image/public/vertical-line.svg);
 }

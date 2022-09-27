@@ -1,4 +1,4 @@
-QT       += core gui svg
+QT       += core gui svg webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -45,6 +45,7 @@ SOURCES += \
 HEADERS += \
     Control/FlatToolButton/flattoolbutton.h \
     Public/appsignal.h \
+    Public/tableitemdelegate.h \
     Public/treeitemdelegate.h \
     Widget/widgetappmenu.h \
     Widget/widgetcontentpages.h \

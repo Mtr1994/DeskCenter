@@ -24,18 +24,17 @@ WidgetContentPages::~WidgetContentPages()
 
 void WidgetContentPages::init()
 {
-    connect(AppSignal::getInstance(), &AppSignal::sgl_change_app_menu, this, &WidgetContentPages::slot_change_app_menu);
-
-    QGridLayout *layout = new QGridLayout(ui->scrollAreaWidgetContents);
+    QGridLayout *layout = new QGridLayout(this);
     layout->setContentsMargins(0, 0, 0, 0);
+    setLayout(layout);
 
-    ui->scrollAreaWidgetContents->setLayout(layout);
-
+    connect(AppSignal::getInstance(), &AppSignal::sgl_change_app_menu, this, &WidgetContentPages::slot_change_app_menu);
 }
 
 void WidgetContentPages::slot_change_app_menu(const QString &menu)
 {
-    auto list = ui->scrollAreaWidgetContents->children();
+
+    auto list = this->children();
     for (auto &child : list)
     {
         if (!child->objectName().contains("mtr1994")) continue;
@@ -44,9 +43,18 @@ void WidgetContentPages::slot_change_app_menu(const QString &menu)
 
     if (menu == "统计分析")
     {
-        WidgetStatistics *widget = new WidgetStatistics(ui->scrollArea);
+        WidgetStatistics *widget = new WidgetStatistics(this);
         widget->setObjectName("mtr1994_WidgetStatistics");
-
-        ui->scrollAreaWidgetContents->layout()->addWidget(widget);
+        widget->setGeometry(0, this->height(), this->width(), this->height());
+        widget->showContent();
+        connect(widget, &WidgetStatistics::sgl_widget_animation_finished, this, [this, widget]{ this->layout()->addWidget(widget); });
+    }
+    else if (menu == "概览")
+    {
+        WidgetStatistics *widget = new WidgetStatistics(this);
+        widget->setObjectName("mtr1994_WidgetStatistics");
+        widget->setGeometry(0, this->height(), this->width(), this->height());
+        widget->showContent();
+        connect(widget, &WidgetStatistics::sgl_widget_animation_finished, this, [this, widget]{ this->layout()->addWidget(widget); });
     }
 }
