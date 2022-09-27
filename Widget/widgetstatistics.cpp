@@ -43,7 +43,6 @@ void WidgetStatistics::init()
     ui->tvRecruitInfo->verticalHeader()->setDefaultSectionSize(metrics.height() * 2.4);
 
     // 测试数据
-
     for (int i = 0; i < 7; i++)
     {
         QList<QStandardItem*> lstItem;
@@ -61,21 +60,28 @@ void WidgetStatistics::init()
         mModelRecruit.appendRow(lstItem);
     }
 
-    // 设计显示动画
     // 位置动画
-    mAnimationPosition = new QPropertyAnimation(this, "pos");
-    mAnimationPosition->setDuration(240);
-    mAnimationPosition->setStartValue(QPoint(0, this->height() * 0.2));
+    mAnimationPosition = new QPropertyAnimation(ui->widgetStatisticsBase, "pos", this);
+    mAnimationPosition->setDuration(480);
+    mAnimationPosition->setStartValue(QPoint(0, this->height() * 0.1));
     mAnimationPosition->setEndValue(QPoint(0, 0));
     mAnimationPosition->setEasingCurve(QEasingCurve::OutBack);
 
-    connect(mAnimationPosition, &QPropertyAnimation::finished, this, [this]{ emit sgl_widget_animation_finished(); });
+    connect(mAnimationPosition, &QPropertyAnimation::finished, this, [this]
+    {
+        QGridLayout *layout = new QGridLayout(this);
+        layout->setContentsMargins(0, 0, 0, 0);
 
-    setMouseTracking(true);
+        layout->addWidget(ui->widgetStatisticsBase);
+        this->setLayout(layout);
+    });
 }
 
 void WidgetStatistics::showContent()
 {
-    show();
+    ui->widgetStatisticsBase->resize(this->width(), this->height());
     mAnimationPosition->start(QPropertyAnimation::DeleteWhenStopped);
+
+    // 显示内容
+    show();
 }

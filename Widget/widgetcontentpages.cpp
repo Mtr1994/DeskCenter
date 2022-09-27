@@ -33,7 +33,6 @@ void WidgetContentPages::init()
 
 void WidgetContentPages::slot_change_app_menu(const QString &menu)
 {
-
     auto list = this->children();
     for (auto &child : list)
     {
@@ -45,16 +44,16 @@ void WidgetContentPages::slot_change_app_menu(const QString &menu)
     {
         WidgetStatistics *widget = new WidgetStatistics(this);
         widget->setObjectName("mtr1994_WidgetStatistics");
-        widget->setGeometry(0, this->height(), this->width(), this->height());
+        widget->resize(this->width(), this->height());
+        this->layout()->addWidget(widget);
         widget->showContent();
-        connect(widget, &WidgetStatistics::sgl_widget_animation_finished, this, [this, widget]{ this->layout()->addWidget(widget); });
     }
     else if (menu == "概览")
     {
         WidgetStatistics *widget = new WidgetStatistics(this);
         widget->setObjectName("mtr1994_WidgetStatistics");
-        widget->setGeometry(0, this->height(), this->width(), this->height());
+        widget->resize(this->width(), this->height());
+        this->layout()->addWidget(widget);
         widget->showContent();
-        connect(widget, &WidgetStatistics::sgl_widget_animation_finished, this, [this, widget]{ this->layout()->addWidget(widget); });
     }
 }
