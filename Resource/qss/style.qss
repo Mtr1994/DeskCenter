@@ -65,11 +65,6 @@ QWidget#widgetContentBase
     background-color: transparent;
 }
 
-QWidget#scrollAreaWidgetContents
-{
-    background-color: red;
-}
-
 QWidget#widgetRecruitBase,#widgetResumeBase,#widgetPostBase
 {
     background-color: #fefefe;
@@ -247,6 +242,7 @@ QTableView::item
     padding-left: 2em;
     color: rgb(131, 138, 151);
     border-bottom: 1px solid rgb(247, 247, 249);
+    background-color: transparent;
 }
 
 QTableView::item:selected

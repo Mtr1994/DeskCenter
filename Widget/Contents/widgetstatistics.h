@@ -2,15 +2,15 @@
 #define WIDGETSTATISTICS_H
 
 #include <QWidget>
-#include <QStandardItemModel>
 
-#include <QPropertyAnimation>
+#include "../Base/animationwidgetbase.h"
 
 namespace Ui {
 class WidgetStatistics;
 }
 
-class WidgetStatistics : public QWidget
+class QStandardItemModel;
+class WidgetStatistics : public AnimationWidgetBase
 {
     Q_OBJECT
 
@@ -22,18 +22,10 @@ public:
 
     void init();
 
-    void showContent();
-
-signals:
-    void sgl_widget_animation_finished();
-
 private:
     Ui::WidgetStatistics *ui;
 
-    QStandardItemModel mModelRecruit;
-
-    // 动画组
-    QPropertyAnimation *mAnimationPosition = nullptr;
+    QStandardItemModel *mModelRecruit = nullptr;
 };
 
 #endif // WIDGETSTATISTICS_H

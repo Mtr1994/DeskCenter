@@ -22,7 +22,7 @@ public:
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const
     {
         QRect rect(option.rect);
-        rect.setLeft(rect.height() * 2);
+        rect.setLeft(rect.height() * 1.5);
 
         QBrush brush;
         QColor color;
@@ -55,7 +55,7 @@ public:
         QRect rectImage(option.rect);
         rectImage.setLeft(rect.height() * 0.5);
         rectImage.setWidth(rect.height());
-        rectImage.adjust(0, rect.height() * 0.2, -rect.height() * 0.4, -rect.height() * 0.2);
+        rectImage.adjust(0, rect.height() * 0.3, -rect.height() * 0.6, -rect.height() * 0.3);
 
         painter->setRenderHint(QPainter::SmoothPixmapTransform);
         painter->drawImage(rectImage, QImage(url));

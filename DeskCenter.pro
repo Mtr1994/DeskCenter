@@ -1,4 +1,4 @@
-QT       += core gui svg webenginewidgets
+QT       += core gui webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,10 +11,10 @@ unix: QMAKE_LFLAGS += -no-pie
 
 # Qt 5.14 VERSION can only contains numbers, no any others type of character please
 # please do not put 0 before any version number, because this will cause a warnning on Qt 5.14
-win32:  VERSION = 21.5.9.1140                # major.minor.patch.build
-else:   VERSION = 21.5.9                    # major.minor.patch
+win32:  VERSION = 22.9.28.1140                # major.minor.patch.build
+else:   VERSION = 22.9.28                    # major.minor.patch
 
-QMAKE_TARGET_COPYRIGHT = mtr company Co., Ltd
+QMAKE_TARGET_COPYRIGHT = Mtr1994 create at 1004
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -36,9 +36,11 @@ DESTDIR = ../bin
 SOURCES += \
     Control/FlatToolButton/flattoolbutton.cpp \
     Public/appsignal.cpp \
+    Widget/Base/animationwidgetbase.cpp \
+    Widget/Contents/widgethomepage.cpp \
     Widget/widgetappmenu.cpp \
     Widget/widgetcontentpages.cpp \
-    Widget/widgetstatistics.cpp \
+    Widget/Contents/widgetstatistics.cpp \
     main.cpp \
     mainwindow.cpp
 
@@ -47,15 +49,18 @@ HEADERS += \
     Public/appsignal.h \
     Public/tableitemdelegate.h \
     Public/treeitemdelegate.h \
+    Widget/Base/animationwidgetbase.h \
+    Widget/Contents/widgethomepage.h \
     Widget/widgetappmenu.h \
     Widget/widgetcontentpages.h \
-    Widget/widgetstatistics.h \
+    Widget/Contents/widgetstatistics.h \
     mainwindow.h
 
 FORMS += \
+    Widget/Contents/widgethomepage.ui \
     Widget/widgetappmenu.ui \
     Widget/widgetcontentpages.ui \
-    Widget/widgetstatistics.ui \
+    Widget/Contents/widgetstatistics.ui \
     mainwindow.ui
 
 TRANSLATIONS += \

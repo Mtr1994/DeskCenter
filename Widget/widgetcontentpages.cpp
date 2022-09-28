@@ -1,7 +1,8 @@
 ﻿#include "widgetcontentpages.h"
 #include "ui_widgetcontentpages.h"
 #include "Public/appsignal.h"
-#include "Widget/widgetstatistics.h"
+#include "Widget/Contents/widgetstatistics.h"
+#include "Widget/Contents/widgethomepage.h"
 
 #include <QGridLayout>
 
@@ -40,20 +41,22 @@ void WidgetContentPages::slot_change_app_menu(const QString &menu)
         child->deleteLater();
     }
 
+    AnimationWidgetBase *widget = nullptr;
     if (menu == "统计分析")
     {
-        WidgetStatistics *widget = new WidgetStatistics(this);
+        widget = new WidgetStatistics(this);
         widget->setObjectName("mtr1994_WidgetStatistics");
-        widget->resize(this->width(), this->height());
-        this->layout()->addWidget(widget);
-        widget->showContent();
     }
     else if (menu == "概览")
     {
-        WidgetStatistics *widget = new WidgetStatistics(this);
-        widget->setObjectName("mtr1994_WidgetStatistics");
-        widget->resize(this->width(), this->height());
-        this->layout()->addWidget(widget);
-        widget->showContent();
+        widget = new WidgetHomePage(this);
+        widget->setObjectName("mtr1994_WidgetHomepage");
     }
+
+    if (nullptr == widget) return;
+
+    widget->resize(this->width(), this->height());
+    widget->showContent();
+
+    connect(widget, &WidgetStatistics::sgl_widget_animation_finished, this, [this, widget]{ this->layout()->addWidget(widget); });
 }

@@ -21,8 +21,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::init()
 {
-    setWindowFlag(Qt::FramelessWindowHint);
+    // 无边框 和 透明底色 在 Qt 1.15.2 中，跟 QTableView 的刷新有冲突，会导致界面闪烁
+    // 在 Qt 6.2.4 LTS 中不存在这个问题
 
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
     // 浮动按钮
