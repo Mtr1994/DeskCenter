@@ -1,6 +1,7 @@
 ﻿#include "animationwidgetbase.h"
 
 #include <QPropertyAnimation>
+#include <QTimer>
 
 // test
 #include <QDebug>
@@ -23,9 +24,15 @@ void AnimationWidgetBase::init()
 
     mAnimationPosition->setStartValue(QPoint(0, metrics.height() * 4));
     mAnimationPosition->setEndValue(QPoint(0, 0));
-    mAnimationPosition->setEasingCurve(QEasingCurve::InSine);
+    mAnimationPosition->setEasingCurve(QEasingCurve::OutBounce);
 
-    connect(mAnimationPosition, &QPropertyAnimation::finished, this, [this] { emit sgl_widget_animation_finished(); });
+    connect(mAnimationPosition, &QPropertyAnimation::finished, this, [this]
+    {
+        // 加载额外的模块
+        QTimer::singleShot(200, this, [this]{ loadSubContent(); });
+
+        emit sgl_widget_animation_finished();
+    });
 }
 
 void AnimationWidgetBase::showContent()
@@ -37,4 +44,9 @@ void AnimationWidgetBase::showContent()
     show();
 
     qDebug() << "AnimationWidgetBase::showContent";
+}
+
+void AnimationWidgetBase::loadSubContent()
+{
+    //
 }

@@ -25,5 +25,10 @@
         <file>Resource/image/menu/workbench_fill.svg</file>
         <file>Resource/icon/logo.png</file>
         <file>Resource/image/public/vertical-line.svg</file>
+        <file>Resource/html/index.html</file>
+        <file>Resource/html/js/echarts.min.js</file>
+        <file>Resource/html/js/main.js</file>
+        <file>Resource/html/js/qwebchannel.js</file>
+        <file>Resource/image/public/notice.svg</file>
     </qresource>
 </RCC>

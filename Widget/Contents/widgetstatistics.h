@@ -9,6 +9,7 @@ namespace Ui {
 class WidgetStatistics;
 }
 
+class JsContext;
 class QStandardItemModel;
 class WidgetStatistics : public AnimationWidgetBase
 {
@@ -23,9 +24,23 @@ public:
     void init();
 
 private:
+    void loadSubContent() override;
+
+    void loadResumeChart();
+
+    void loadPostChart();
+
+private slots:
+    void slot_btn_need_people_clicked();
+
+private:
     Ui::WidgetStatistics *ui;
 
     QStandardItemModel *mModelRecruit = nullptr;
+
+    // web 通信
+    JsContext *mJsContextResume = nullptr;
+    JsContext *mJsContextPost = nullptr;
 };
 
 #endif // WIDGETSTATISTICS_H

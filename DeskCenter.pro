@@ -1,4 +1,4 @@
-QT       += core gui webenginewidgets
+QT       += core gui webenginewidgets webchannel
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -34,6 +34,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 DESTDIR = ../bin
 
 SOURCES += \
+    Channel/jscontext.cpp \
     Control/FlatToolButton/flattoolbutton.cpp \
     Public/appsignal.cpp \
     Widget/Base/animationwidgetbase.cpp \
@@ -45,6 +46,7 @@ SOURCES += \
     mainwindow.cpp
 
 HEADERS += \
+    Channel/jscontext.h \
     Control/FlatToolButton/flattoolbutton.h \
     Public/appsignal.h \
     Public/tableitemdelegate.h \

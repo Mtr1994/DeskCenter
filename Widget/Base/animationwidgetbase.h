@@ -12,7 +12,11 @@ public:
 
     void init();
 
-    virtual void showContent();
+    void showContent();
+
+private:
+    // 用于加载哪些需要额外动态库的组件（使用代码控制）
+    virtual void loadSubContent();
 
 signals:
     void sgl_widget_animation_finished();

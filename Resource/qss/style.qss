@@ -20,6 +20,14 @@ QWidget[Background="true"]
     background-color: #fefefe;
 }
 
+QWidget[Notice="true"]
+{
+    min-height: 2em;
+    border-radius: 0.1em;
+    border: 1px solid #739c9c;
+    background-color: rgba(76, 166, 168, 24);
+}
+
 QWidget#widgetBase
 {
     border-radius: 0.3em;
@@ -72,10 +80,21 @@ QWidget#widgetRecruitBase,#widgetResumeBase,#widgetPostBase
     border-radius: 0.3em;
 }
 
+QWidget#widgetResumeBase,#widgetPostBase
+{
+    min-height: 20em;
+    max-height: 20em;
+}
+
 /* QScrollArea */
 QScrollArea
 {
     border: none;
+    background-color: transparent;
+}
+
+QWidget#scrollAreaWidgetContents
+{
     background-color: transparent;
 }
 
@@ -233,6 +252,7 @@ QTableView
     gridline-color: rgb(247, 247, 249);
     outline: none;
     min-height: 21.6em;
+    max-height: 21.6em;
     padding-left: 2em;
 }
 
@@ -302,4 +322,9 @@ QLabel[TitleIcon]
     min-width: 0.8em;
     min-height: 3.2em;
     image: url(:/Resource/image/public/vertical-line.svg);
+}
+
+QLabel[IconSizeA]
+{
+    min-width: 2em;
 }

@@ -1,8 +1,14 @@
 ﻿#include "widgetstatistics.h"
 #include "ui_widgetstatistics.h"
+#include "Channel/jscontext.h"
 
 #include <QPropertyAnimation>
 #include <QStandardItemModel>
+#include <QWebEngineView>
+#include <QWebEngineSettings>
+#include <QWebChannel>
+#include <QWebEngineScript>
+#include <QGridLayout>
 
 WidgetStatistics::WidgetStatistics(QWidget *parent) :
     AnimationWidgetBase(parent),
@@ -39,8 +45,6 @@ void WidgetStatistics::init()
     ui->tvRecruitInfo->horizontalHeader()->setDefaultAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     ui->tvRecruitInfo->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
-
-
     QFont font("Microsoft YaHei", 10);
     QFontMetrics metrics(font);
     ui->tvRecruitInfo->verticalHeader()->setDefaultSectionSize(metrics.height() * 2.4);
@@ -64,4 +68,85 @@ void WidgetStatistics::init()
     }
 
     ui->tvRecruitInfo->setModel(mModelRecruit);
+
+    // 单选按钮组
+    connect(ui->btnNeedPeople, &QPushButton::clicked, this, &WidgetStatistics::slot_btn_need_people_clicked);
+}
+
+void WidgetStatistics::loadSubContent()
+{
+    // 加载简历图表
+    loadResumeChart();
+
+    // 加载岗位图表
+    loadPostChart();
+}
+
+void WidgetStatistics::loadResumeChart()
+{
+    QWebEngineView *widgetview = new QWebEngineView(ui->widgetResumeContainer);
+    widgetview->setContextMenuPolicy(Qt::NoContextMenu);
+
+    widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
+    widgetview->settings()->setAttribute(QWebEngineSettings::WebGLEnabled, true);
+    widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
+
+    widgetview->page()->load(QUrl(QString("%1/../Resource/html/index.html").arg(QApplication::applicationDirPath())).toString());
+    widgetview->page()->setBackgroundColor(QColor(255, 255, 255));
+
+    mJsContextResume = new JsContext(this);
+    QWebChannel *channel = new QWebChannel(this);
+    channel->registerObject("context", mJsContextResume);
+    widgetview->page()->setWebChannel(channel);
+
+    connect(mJsContextResume, &JsContext::sgl_init_channel_finished, this, [this]{ emit mJsContextResume->sgl_load_new_chart("resume"); });
+
+//    ////// 网页调试部分，发布时请注释此段代码 S
+//    QWebEngineView *debuPage = new QWebEngineView;
+//    widgetview->page()->setDevToolsPage(debuPage->page());
+//    widgetview->page()->triggerAction(QWebEnginePage::WebAction::InspectElement);
+//    debuPage->show();
+//    ////// 网页调试部分，发布时请注释此段代码 E
+
+    QGridLayout *layout = new QGridLayout(ui->widgetResumeContainer);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(widgetview);
+    ui->widgetResumeContainer->setLayout(layout);
+}
+
+void WidgetStatistics::loadPostChart()
+{
+    QWebEngineView *widgetview = new QWebEngineView(ui->widgetPostContainer);
+    widgetview->setContextMenuPolicy(Qt::NoContextMenu);
+
+    widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
+    widgetview->settings()->setAttribute(QWebEngineSettings::WebGLEnabled, true);
+    widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
+
+    widgetview->page()->load(QUrl(QString("%1/../Resource/html/index.html").arg(QApplication::applicationDirPath())).toString());
+    widgetview->page()->setBackgroundColor(QColor(255, 255, 255));
+
+    mJsContextPost = new JsContext(this);
+    QWebChannel *channel = new QWebChannel(this);
+    channel->registerObject("context", mJsContextPost);
+    widgetview->page()->setWebChannel(channel);
+
+    connect(mJsContextPost, &JsContext::sgl_init_channel_finished, this, [this]{ emit mJsContextPost->sgl_load_new_chart("post"); });
+
+//    ////// 网页调试部分，发布时请注释此段代码 S
+//    QWebEngineView *debuPage = new QWebEngineView;
+//    widgetview->page()->setDevToolsPage(debuPage->page());
+//    widgetview->page()->triggerAction(QWebEnginePage::WebAction::InspectElement);
+//    debuPage->show();
+//    ////// 网页调试部分，发布时请注释此段代码 E
+
+    QGridLayout *layout = new QGridLayout(ui->widgetPostContainer);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(widgetview);
+    ui->widgetPostContainer->setLayout(layout);
+}
+
+void WidgetStatistics::slot_btn_need_people_clicked()
+{
+    //
 }
