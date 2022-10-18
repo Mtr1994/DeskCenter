@@ -80,3 +80,5 @@ RESOURCES += \
 
 #0x0800代表和系统当前语言一致
 RC_LANG = 0x0800
+
+LIBS += -lUser32 -lGdi32

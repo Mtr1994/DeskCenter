@@ -96,6 +96,7 @@ QScrollArea
 QWidget#scrollAreaWidgetContents
 {
     background-color: transparent;
+    padding: 4em;
 }
 
 /* QPushButton */
@@ -327,4 +328,18 @@ QLabel[TitleIcon]
 QLabel[IconSizeA]
 {
     min-width: 2em;
+}
+
+QLabel[BottomLabel]
+{
+    color: #777777;
+}
+
+/* QFrame */
+QFrame[BottomLine]
+{
+    background-color: #eaeaea;
+    border: none;
+    max-height: 1px;
+    margin: 0em 2em;
 }

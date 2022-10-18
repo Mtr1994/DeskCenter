@@ -30,6 +30,10 @@ void WidgetContentPages::init()
     setLayout(layout);
 
     connect(AppSignal::getInstance(), &AppSignal::sgl_change_app_menu, this, &WidgetContentPages::slot_change_app_menu);
+
+    AnimationWidgetBase *widget = new WidgetHomePage(this);
+    widget->setObjectName("mtr1994_WidgetHomepage");
+    this->layout()->addWidget(widget);
 }
 
 void WidgetContentPages::slot_change_app_menu(const QString &menu)

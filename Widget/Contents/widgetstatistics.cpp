@@ -119,6 +119,9 @@ void WidgetStatistics::loadPostChart()
     QWebEngineView *widgetview = new QWebEngineView(ui->widgetPostContainer);
     widgetview->setContextMenuPolicy(Qt::NoContextMenu);
 
+    // 这个会禁用所有鼠标事件，包括浮动、点击和滚动（其实这里只想禁止鼠标滚动就好）
+    //widgetview->setAttribute(Qt::WA_TransparentForMouseEvents, true);
+
     widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
     widgetview->settings()->setAttribute(QWebEngineSettings::WebGLEnabled, true);
     widgetview->settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
@@ -133,12 +136,12 @@ void WidgetStatistics::loadPostChart()
 
     connect(mJsContextPost, &JsContext::sgl_init_channel_finished, this, [this]{ emit mJsContextPost->sgl_load_new_chart("post"); });
 
-//    ////// 网页调试部分，发布时请注释此段代码 S
-//    QWebEngineView *debuPage = new QWebEngineView;
-//    widgetview->page()->setDevToolsPage(debuPage->page());
-//    widgetview->page()->triggerAction(QWebEnginePage::WebAction::InspectElement);
-//    debuPage->show();
-//    ////// 网页调试部分，发布时请注释此段代码 E
+////    ////// 网页调试部分，发布时请注释此段代码 S
+////    QWebEngineView *debuPage = new QWebEngineView;
+////    widgetview->page()->setDevToolsPage(debuPage->page());
+////    widgetview->page()->triggerAction(QWebEnginePage::WebAction::InspectElement);
+////    debuPage->show();
+////    ////// 网页调试部分，发布时请注释此段代码 E
 
     QGridLayout *layout = new QGridLayout(ui->widgetPostContainer);
     layout->setContentsMargins(0, 0, 0, 0);
