@@ -23,8 +23,6 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
     void mouseMoveEvent(QMouseEvent* event);
 
-    bool nativeEvent(const QByteArray &eventType, void *message, long *result);
-
 private:
     Ui::MainWindow *ui;
 

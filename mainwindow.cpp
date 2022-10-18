@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QStyle>
 
+// 程序设计来源于 https://www.ui.cn/detail/634573
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -15,8 +17,6 @@ MainWindow::MainWindow(QWidget *parent)
     init();
 
     setWindowTitle("客户端管理程序模板");
-
-    // 程序设计来源于 https://www.ui.cn/detail/634573
 }
 
 MainWindow::~MainWindow()
@@ -29,7 +29,8 @@ void MainWindow::init()
     // 无边框 和 透明底色 在 Qt 1.15.2 中，跟 QTableView 的刷新有冲突，会导致界面闪烁 （已处理）
     // 在 Qt 6.2.4 LTS 中不存在这个问题
 
-    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint); // Qt::MSWindowsFixedSizeDialogHint 用于处理拉伸闪烁
+    // Qt::MSWindowsFixedSizeDialogHint 用于处理拉伸闪烁
+    setWindowFlags(Qt::Window | Qt::FramelessWindowHint | Qt::MSWindowsFixedSizeDialogHint);
     setAttribute(Qt::WA_TranslucentBackground);
 
     // 浮动按钮
@@ -63,27 +64,3 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)
     move(position.x(), position.y());
     mLastMousePosition = event->globalPos();
 }
-
-bool MainWindow::nativeEvent(const QByteArray &eventType, void *message, long *result)
-{
-    MSG * msg = reinterpret_cast<MSG *>(message);
-    switch (msg->message)
-    {
-    case WM_NCCALCSIZE:
-    {
-        // 用于处理拉伸闪烁 (非客户区)
-        LPNCCALCSIZE_PARAMS ncParams = (LPNCCALCSIZE_PARAMS)msg->lParam;
-        int tmp = -3;
-        ncParams->rgrc[0].top += tmp;
-        ncParams->rgrc[0].left += tmp;
-        ncParams->rgrc[0].bottom -= tmp;
-        ncParams->rgrc[0].right -= tmp;
-        break;
-    }
-    default:
-        break;
-    }
-
-    return QWidget::nativeEvent(eventType, message, result);
-}
-
